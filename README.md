@@ -62,8 +62,5 @@ streamlit run dashboard.py
 - Streamlit
 - Python
 
-## License
-[Add your license information]
-
-![Dashboard Screenshot](kafka-project/dashboard_sc.png)
+![Dashboard Screenshot](dashboard_sc.png)
 The Real-Time IoT Dashboard is a Streamlit-based visualization tool that displays live temperature data from an IoT sensor, showing the current temperature of machine-01, the number of high-temperature alerts in a 5-second window, and the average temperature over a 10-second window. The line chart presents a time series of temperature readings, allowing users to track temperature fluctuations in real-time. By leveraging Kafka and Quix Streams, the dashboard provides a dynamic, continuously updated view of sensor data, enabling quick insights into temperature trends and potential anomalies.
