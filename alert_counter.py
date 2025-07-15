@@ -1,8 +1,8 @@
-import logging
 from quixstreams import Application
 
 def main():
-    logging.info("Starting alert counter...")
+    print("Starting alert counter...")
+    
     app = Application(
         broker_address="localhost:9092",
         consumer_group="alert_counter",
@@ -17,13 +17,10 @@ def main():
     # Count alerts in 5-second windows
     sdf = sdf.tumbling_window(duration_ms=5000).count().current()
     
-    # Transform the result to include timestamp and count
     def format_count(result):
         return {
             "timestamp": result["end"],
-            "alert_count": result["value"],
-            "window_start": result["start"],
-            "window_end": result["end"]
+            "alert_count": result["value"]
         }
     
     sdf = sdf.apply(format_count)
@@ -33,5 +30,4 @@ def main():
     app.run(sdf)
 
 if __name__ == "__main__":
-    logging.basicConfig(level="DEBUG")
     main()
